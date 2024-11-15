@@ -8,71 +8,77 @@
     "version": "1.0.0",
     "attributes": {
       "metadata": {
-        "title": "Serverless Search Portal",
-        "description": "This is an example of a basis Globus Search interface generated from a static.json file."
+        "title": "Project 8 Yale Data Portal"
       },
-      "theme": {
-        "colors": {
-          "brand": {
-            "50": "#e8f3ff",
-            "100": "#cfd8e3",
-            "200": "#b5bdcc",
-            "300": "#97a3b4",
-            "400": "#7b899d",
-            "500": "#626f84",
-            "600": "#4b5768",
-            "700": "#343e4b",
-            "800": "#1e2530",
-            "900": "#070c18"
-          }
-        }
-      },
-      "content": {
+      "features": {
+        "transfer": true
+      }, "content": {
+        "headline": "Project 8 Yale Data Portal",
+        "title": "Project 8 Yale Data Portal",
         "logo": {
-          "src": "https://www.usgs.gov/themes/custom/usgs_tantalum/usgs_logo.png",
-          "alt": "USGS – science for a changing world"
+          "src": "https://live.staticflickr.com/7527/15616817277_1d70735d81_b.jpg"
         },
-        "headline": "ScienceBase Data Releases"
+        "privacy_policy": "",
+        "terms_of_service": "",
+        "tagline" : "Unlocking the Secrets of the Universe's Ghost Particles: Measuring the Elusive Neutrino Mass",
+        "navigation": {
+          "items": [
+            {
+              "label": "Yale Wright Lab",
+              "href": "https://wlab.yale.edu/"
+            },
+            {
+              "label": "Project 8",
+              "href": "https://www.project8.org/"
+            },
+            {
+              "label": "GitHub",
+              "href": "https://github.com/project8"
+            },
+            {
+              "label": "Globus",
+              "href": "https://www.globus.org"
+            }
+          ]
+        }
       },
       "components": {
         "Result": {
-          "heading": "entries[0].content.title",
-          "summary": "entries[0].content.summary",
+          
+          "heading": "entries[0].content.name",
+
           "fields": [
-            {
-              "label": "Purpose",
-              "property": "entries[0].content.purpose"
-            },
-            {
-              "label": "Material Request Instructions",
-              "property": "entries[0].content.materialRequestInstructions"
-            },
             {
               "label": "Tags",
               "property": "entries[0].content.tags"
+            },
+            {
+              "label": "Region",
+              "property": "entries[0].content.region"
+            },
+            {
+              "label": "Run List",
+              "property": "entries[0].content.run-list"
             }
           ]
         }
       },
       "globus": {
+        "application": {
+          "client_id": "b33c588b-29d0-4fd9-a557-efabfc97b949"
+        },
         "search": {
-          "index": "6d222eba-980f-410c-9a58-52a785d660ea",
+          "index": "2707914f-bdeb-49ee-a4b8-54e645b3d885",
           "facets": [
             {
               "name": "Tags",
-              "field_name": "tags.name",
+              "field_name": "tags",
               "type": "terms",
               "size": 10
             },
             {
-              "name": "Categories",
-              "field_name": "browseCategories",
-              "type": "terms",
-              "size": 10
-            },
-            {
-              "name": "System Types",
-              "field_name": "systemTypes",
+              "name": "Region",
+              "field_name": "region",
               "type": "terms",
               "size": 10
             }
