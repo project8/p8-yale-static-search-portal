@@ -156,6 +156,8 @@ export function Search() {
                     Your query will be sent to Globus Search as an advanced
                     query and will need to comply with the Globus Search
                     advanced query syntax.
+
+                    This is a test.
                   </Text>
                   <Text fontSize="xs" py={2}>
                     <Code>field:value OR field:other</Code>
