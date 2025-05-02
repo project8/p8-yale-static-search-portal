@@ -1,7 +1,7 @@
 {
   "_static": {
     "generator": {
-      "name": "@project8/p8-yale-static-search-portal"
+      "name": "git://github.com/project8/p8-yale-static-search-portal.git"
     }
   },
   "data": {
