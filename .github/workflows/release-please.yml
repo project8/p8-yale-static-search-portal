@@ -6,6 +6,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  packages: write
 
 name: release-please
 
@@ -25,8 +26,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/iron
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@globus'
+          #registry-url: 'https://registry.npmjs.org'
+          registry-url: 'https://npm.pkg.github.com'
+          #scope: '@globus'
+          scope: '@project8'
         if: ${{ steps.release.outputs.releases_created == 'true' }}
       - run: npm ci
         if: ${{ steps.release.outputs.releases_created == 'true'  }}
