@@ -1,0 +1,36 @@
+{
+    "run-id": "1230425132918",
+    "run-parameters": {
+        "run-type": "simulation",
+        "simulation-type": "cavity",
+        "simulation-subtype": "cca",
+        "user-defined-tag": "testing123456",
+        "sampling-freq-mega-hz": "403.0",
+        "configured-e-min": "18500.000000",
+        "configured-pitch-min": "88.000000000",
+        "configured-x-min": "-0.005000000",
+        "configured-y-min": "-0.005000000",
+        "configured-z-min": "0.000000000"
+    },
+    "nevents": 1,
+    "0": {
+        "event-tag": "1230425971610",
+        "kassiopeia-seed": 968137,
+        "track-length-seed": 967703,
+        "track-delay-seed": 972498,
+        "ntracks": 1,
+        "0": {
+            "start-time": 0.00052681,
+            "end-time": -99,
+            "energy-ev": 18598.5,
+            "start-radius": 0.00651372,
+            "start-radial-phase": 2.27928,
+            "output-avg-frequency": 0,
+            "output-track-start-frequency": -99,
+            "output-inst-start-frequency": -99,
+            "pitch-angle": -99.0,
+            "slope": -99,
+            "avg-axial-frequency": 0
+        }
+    }
+}

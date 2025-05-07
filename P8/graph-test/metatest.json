@@ -1,0 +1,95 @@
+{
+    "run-id": "1121124537170",
+    "run-parameters": {
+        "run-type": "simulation",
+        "simulation-type": "cavity",
+        "simulation-subtype": "cca",
+        "sampling-freq-mega-hz": "403"
+    },
+    "1121124151314": {
+        "ntracks": "2",
+        "0":
+         {
+             "start-time": "0.00181088",
+             "end-time": "0.00186132",
+             "output-avg-frequency": "1.37393e+08",
+             "pitch-angle": "90.9926",
+             "avg-axial-frequency": "6.59707e+06"
+         },
+        "1":
+         {
+             "start-time": "0.00186132",
+             "end-time": "0.00186237",
+             "output-avg-frequency": "1.4799e+08",
+             "pitch-angle": "-99",
+             "avg-axial-frequency": "0"
+         }
+    },
+    "1121124950525": {
+        "ntracks": "8",
+        "0":
+         {
+             "start-time": "0.00295326",
+             "end-time": "0.00315325",
+             "output-avg-frequency": "1.42642e+08",
+             "pitch-angle": "91.6883",
+             "avg-axial-frequency": "8.39062e+06"
+         },
+        "1":
+         {
+             "start-time": "0.00315325",
+             "end-time": "0.00334027",
+             "output-avg-frequency": "1.39354e+08",
+             "pitch-angle": "91.1053",
+             "avg-axial-frequency": "1.59635e+07"
+         },
+        "2":
+         {
+             "start-time": "0.00334027",
+             "end-time": "0.00346262",
+             "output-avg-frequency": "1.4154e+08",
+             "pitch-angle": "91.3219",
+             "avg-axial-frequency": "3.20862e+07"
+         },
+        "3":
+         {
+             "start-time": "0.00346262",
+             "end-time": "0.00348478",
+             "output-avg-frequency": "1.42973e+08",
+             "pitch-angle": "91.3894",
+             "avg-axial-frequency": "1.85453e+08"
+         },
+        "4":
+         {
+             "start-time": "0.00348478",
+             "end-time": "0.00353874",
+             "output-avg-frequency": "1.44819e+08",
+             "pitch-angle": "91.4859",
+             "avg-axial-frequency": "8.41395e+07"
+         },
+        "5":
+         {
+             "start-time": "0.00353874",
+             "end-time": "0.00357335",
+             "output-avg-frequency": "1.45273e+08",
+             "pitch-angle": "88.6405",
+             "avg-axial-frequency": "1.38857e+08"
+         },
+        "6":
+         {
+             "start-time": "0.00357335",
+             "end-time": "0.00364035",
+             "output-avg-frequency": "1.46096e+08",
+             "pitch-angle": "88.7134",
+             "avg-axial-frequency": "7.93247e+07"
+         },
+        "7":
+         {
+             "start-time": "0.00364035",
+             "end-time": "0.0036417",
+             "output-avg-frequency": "1.46619e+08",
+             "pitch-angle": "-99",
+             "avg-axial-frequency": "0"
+         }
+    }
+}
