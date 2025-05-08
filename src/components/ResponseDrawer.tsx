@@ -12,7 +12,7 @@ import {
 
 export default function ResponseDrawer({ children }: { children: any }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+  const btnRef = React.useRef(undefined);
 
   return (
     <>

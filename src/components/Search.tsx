@@ -99,9 +99,8 @@ export function Search() {
     query,
     search,
     isAdvanced,
-    isAuthenticationEnabled
-      ? auth.authorization?.tokens?.search?.access_token
-      : undefined,
+    auth.isAuthenticated,
+    auth?.authorization?.tokens?.search?.access_token,
   ]);
 
   return (
@@ -187,11 +186,13 @@ export function Search() {
           )}
         </VStack>
       </Box>
-     
+
       <Box>
-        {!isLoading && result && result.total > 0 && <PlotMetaData result={result} />}
+        {!isLoading && result && result.total > 0 && (
+          <PlotMetaData result={result} />
+        )}
       </Box>
-     
+
       <Box>
         <Box p={4}>
           {isGError(result) && <Error error={result} />}

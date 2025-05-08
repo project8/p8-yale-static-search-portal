@@ -179,9 +179,9 @@ export async function getTransferDetailsFromResult(
     return getValueFrom<string>(result, config[property]?.property);
   }
 
-  const collection = await getTransferValue("collection");
-  const path = await getTransferValue("path");
-  const type = await getTransferValue("type");
+  const collection = (await getTransferValue("collection")) as string;
+  const path = (await getTransferValue("path")) as string;
+  const type = (await getTransferValue("type")) as "file" | "directory";
 
   return {
     collection,

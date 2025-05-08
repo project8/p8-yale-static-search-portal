@@ -1,5 +1,4 @@
-//const result = require('./search-test.json')
-
+// const result = require('./search-test.json')
 
 // x: result?.gmeta?.map((x) => x?.entries[0]?.content?.name?.run-parameters?.sampling-freq-mega-hz),
 
@@ -55,49 +54,78 @@ plt.show()
 
 */
 
-function process_metadata_json() {
+/*
 
-    const shortTracks = 1.e-6; // cut for short tracks
+function processMetadataJson() {
+  const shortTracks = 1e-6; // cut for short tracks
 
-    var avg_frequency = [];
-    var start_radius = [];
-    var electron_energy = [];
-    var track_length = [];
-    var first_track_length = [];
-    var start_time = [];
-    var ntracks = [];
+  const avg_frequency = [];
+  const start_radius = [];
+  const electron_energy = [];
+  const track_length = [];
+  const first_track_length = [];
+  const start_time = [];
+  const ntracks = [];
 
-    const raw_data = result?.gmeta?.map((x) => JSON.parse(x?.entries[0]?.content?.raw_metadata));
+  const raw_data = result?.gmeta?.map((x) =>
+    JSON.parse(x?.entries[0]?.content?.raw_metadata),
+  );
 
-    raw_data.forEach((data) =>
-    {
-        for (let ievent = 0; ievent < data?.nevents ; ievent++) {
-            ntracks.push(data?.[ievent.toString()]?.ntracks);
-            for (let itrack = 0 ; itrack < data?.[ievent.toString()]?.ntracks ; itrack++) {
-                if ((data?.[ievent.toString()]?.[itrack.toString()]?.["end-time"] - data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"]) > shortTracks) {  // Select stably-trapped electrons:                            
-                    avg_frequency.push(data?.[ievent.toString()]?.[itrack.toString()]?.["output-avg-frequency"]);
-                    start_radius.push(data?.[ievent.toString()]?.[itrack.toString()]?.["start-radius"]);
-                    electron_energy.push(data?.[ievent.toString()]?.[itrack.toString()]?.["energy-ev"]);
-                    track_length.push(data?.[ievent.toString()]?.[itrack.toString()]?.["end-time"] - data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"]);
-                    if (itrack == 0) {
-                        first_track_length.push(data?.[ievent.toString()]?.[itrack.toString()]?.["end-time"] - data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"]);
-                        start_time.push(data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"]);
-                    }
-                }
-            }
+  raw_data.forEach((data) => {
+    for (let ievent = 0; ievent < data?.nevents; ievent++) {
+      ntracks.push(data?.[ievent.toString()]?.ntracks);
+      for (
+        let itrack = 0;
+        itrack < data?.[ievent.toString()]?.ntracks;
+        itrack++
+      ) {
+        if (
+          data?.[ievent.toString()]?.[itrack.toString()]?.["end-time"] -
+            data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"] >
+          shortTracks
+        ) {
+          // Select stably-trapped electrons:
+          avg_frequency.push(
+            data?.[ievent.toString()]?.[itrack.toString()]?.[
+              "output-avg-frequency"
+            ],
+          );
+          start_radius.push(
+            data?.[ievent.toString()]?.[itrack.toString()]?.["start-radius"],
+          );
+          electron_energy.push(
+            data?.[ievent.toString()]?.[itrack.toString()]?.["energy-ev"],
+          );
+          track_length.push(
+            data?.[ievent.toString()]?.[itrack.toString()]?.["end-time"] -
+              data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"],
+          );
+          if (itrack == 0) {
+            first_track_length.push(
+              data?.[ievent.toString()]?.[itrack.toString()]?.["end-time"] -
+                data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"],
+            );
+            start_time.push(
+              data?.[ievent.toString()]?.[itrack.toString()]?.["start-time"],
+            );
+          }
         }
-    });
+      }
+    }
+  });
 
-    return({ 
-        "avg_frequency" : avg_frequency,
-        "start_radius" : start_radius,
-        "electron_energy" : electron_energy,
-        "track_length" : track_length,
-        "first_track_length" : first_track_length,
-        "start_time" : start_time,
-        "ntracks" : ntracks
-    });
+  return {
+    avg_frequency,
+    start_radius,
+    electron_energy,
+    track_length,
+    first_track_length,
+    start_time,
+    ntracks,
+  };
 }
+
+*/
 
 /*
 fig, axes = plt.subplots(2,2, figsize=(10,8))
