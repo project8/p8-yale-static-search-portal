@@ -12,9 +12,9 @@ describe("Result", () => {
   it("renders the result component correctly", async () => {
     // @ts-expect-error
     render(<Result result={result} />);
-    await screen.findByText(result.entries[0].content.title);
+    await screen.findByText(result.entries[0].content.name);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      result.entries[0].content.title,
+      result.entries[0].content.name,
     );
   });
 
@@ -23,12 +23,12 @@ describe("Result", () => {
      * Change the value of `components.Result.heading`
      */
     _STATIC.data.attributes.components.Result.heading =
-      "entries[0].content.purpose";
+      "entries[0].content.raw_metadata";
     // @ts-expect-error
     render(<Result result={result} />);
-    await screen.findByText(result.entries[0].content.purpose);
+    await screen.findByText(result.entries[0].content.raw_metadata);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      result.entries[0].content.purpose,
+      result.entries[0].content.raw_metadata,
     );
   });
 });
