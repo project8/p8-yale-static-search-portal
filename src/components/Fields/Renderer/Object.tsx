@@ -41,7 +41,7 @@ export function ObjectRenderer(props: GlobusEmbedProps) {
         URL.revokeObjectURL(objectUrl);
       }
     };
-  }, [blob]);
+  }, [blob, objectUrl]);
 
   return (
     objectUrl &&

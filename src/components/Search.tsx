@@ -41,6 +41,7 @@ import { Error } from "./Error";
 import { Pagination } from "./Pagination";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
+import { PlotMetaData } from "./PlotMetaData";
 
 const SEARCH_INDEX = getAttribute("globus.search.index");
 const FACETS = getAttribute("globus.search.facets", []);
@@ -98,9 +99,8 @@ export function Search() {
     query,
     search,
     isAdvanced,
-    isAuthenticationEnabled
-      ? auth.authorization?.tokens?.search?.access_token
-      : undefined,
+    auth.isAuthenticated,
+    auth?.authorization?.tokens?.search?.access_token,
   ]);
 
   return (
@@ -155,7 +155,7 @@ export function Search() {
                   <Text fontSize="sm">
                     Your query will be sent to Globus Search as an advanced
                     query and will need to comply with the Globus Search
-                    advanced query syntax. This is a test - 12345.
+                    advanced query syntax.
                   </Text>
                   <Text fontSize="xs" py={2}>
                     <Code>field:value OR field:other</Code>
@@ -186,6 +186,13 @@ export function Search() {
           )}
         </VStack>
       </Box>
+
+      <Box>
+        {!isLoading && result && result.total > 0 && (
+          <PlotMetaData result={result} />
+        )}
+      </Box>
+
       <Box>
         <Box p={4}>
           {isGError(result) && <Error error={result} />}
