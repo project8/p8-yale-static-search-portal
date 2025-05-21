@@ -72,7 +72,8 @@
       },
       "globus": {
         "application": {
-          "client_id": "b33c588b-29d0-4fd9-a557-efabfc97b949"
+          "client_id": "b33c588b-29d0-4fd9-a557-efabfc97b949",
+          "redirect_uri": "https://project8.github.io/p8-yale-dataportal/authenticate"
         },
         "search": {
           "index": "2707914f-bdeb-49ee-a4b8-54e645b3d885",
