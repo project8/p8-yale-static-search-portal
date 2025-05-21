@@ -132,7 +132,12 @@ jobs:
                 "host": "${{ steps.configure-pages.outputs.host }}",
                 "base_path": "${{ steps.configure-pages.outputs.base_path }}",
               }
-            });          
+            });
+      - name: Replacing static.json in Generator
+        env:
+          STATIC_JSON: ${{ steps.static.outputs.result }}
+        run: |
+          jq -r '.' <<<"$STATIC_JSON" > ./static.json
       - name: Restore cache
         uses: actions/cache@v4
         with:
