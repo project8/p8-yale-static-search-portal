@@ -4,6 +4,9 @@
       "name": "@project8/p8-yale-static-search-portal"
     },
     "host": {
+      "base_url": "https://project8.github.io/p8-yale-static-search-portal",
+      "origin": "https://project8.github.io",
+      "host": "project8.github.io",
       "base_path": "/p8-yale-static-search-portal"
     }
   },
