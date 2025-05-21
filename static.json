@@ -2,6 +2,9 @@
   "_static": {
     "generator": {
       "name": "@project8/p8-yale-static-search-portal"
+    },
+    "host": {
+      "base_path" : "https://project8.github.io/p8-yale-static-search-portal/"
     }
   },
   "data": {
