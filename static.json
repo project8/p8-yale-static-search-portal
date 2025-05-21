@@ -2,12 +2,6 @@
   "_static": {
     "generator": {
       "name": "@project8/p8-yale-static-search-portal"
-    },
-    "host": {
-      "base_url": "https://project8.github.io/p8-yale-static-search-portal",
-      "origin": "https://project8.github.io",
-      "host": "project8.github.io",
-      "base_path": "/p8-yale-static-search-portal"
     }
   },
   "data": {
@@ -72,8 +66,7 @@
       },
       "globus": {
         "application": {
-          "client_id": "b33c588b-29d0-4fd9-a557-efabfc97b949",
-          "redirect_uri": "https://project8.github.io/p8-yale-dataportal/authenticate"
+          "client_id": "b33c588b-29d0-4fd9-a557-efabfc97b949"
         },
         "search": {
           "index": "2707914f-bdeb-49ee-a4b8-54e645b3d885",
