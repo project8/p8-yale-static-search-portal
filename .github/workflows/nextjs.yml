@@ -27,6 +27,11 @@ concurrency:
 jobs:
   # Build job
   build:
+    environment:
+     # name: ${{ inputs.deploy_to_github_pages == true && 'github-pages' || 'static-output' }}
+     # url: ${{ inputs.deploy_to_github_pages == true && steps.deployment.outputs.page_url || ''}}
+     name: 'github-pages'
+     url: steps.deployment.outputs.page_url
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
