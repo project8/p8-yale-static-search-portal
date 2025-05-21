@@ -1,0 +1,184 @@
+name: static-github-packages
+on:
+  workflow_call:
+    inputs:
+      deploy_to_github_pages:
+        description: 'Whether or not to deploy to GitHub Pages. If disabled, the workflow will only build and create an artifact for deployment.'
+        default: true
+        type: boolean
+        required: false
+      generator_repository:
+        description: 'The repository name, with owner, to use as the generator. If not provided, the generator will be inferred from the static.json file.'
+        type: string
+        required: false
+      generator_ref:
+        description: 'The branch, tag, or SHA to checkout. If not provided, the version will be inferred from the ecosystem file and used as the ref.'
+        type: string
+        required: false
+  push:
+  workflow_dispatch:
+
+      
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: read
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "static-build"
+  cancel-in-progress: false
+
+jobs:
+  static:
+    environment:
+     # name: ${{ inputs.deploy_to_github_pages == true && 'github-pages' || 'static-output' }}
+     # url: ${{ inputs.deploy_to_github_pages == true && steps.deployment.outputs.page_url || ''}}
+     name: 'github-pages'
+     url: steps.deployment.outputs.page_url
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure GitHub Pages
+        #if: ${{ inputs.deploy_to_github_pages == true }}
+        id: configure-pages
+        uses: actions/configure-pages@v5
+      # Parses the defined static.json file for use in steps and injects "_static" internal configuration.
+      - name: Parsing static.json
+        id: static
+        uses: actions/github-script@v7
+        with:
+          script: |
+            /**
+            * Parse a `static.json` file and return the JSON object.
+            * @param {object} env - Environment packages from the Github Action (i.e. core, github, context)
+            * @param {object} state - State from the Github Action (i.e. outputs)
+            */
+            function parse({ core }, state = {}) {
+            const fs = require('fs');
+            let config = {};
+            try {
+              config = JSON.parse(fs.readFileSync('./static.json', 'utf8'));
+            } catch (e) {
+              core.setFailed(`Unable to parse static.json: ${e.message}`);
+            }
+            // Merge GitHub Action state with the parsed static.json
+            config = {
+              ...config,
+              _static: {
+               host: {
+                ...state.host,
+               },
+               ...config._static,
+              },
+            }
+
+            try {
+              validate(config);
+            } catch (e) {
+              core.setFailed(`Invalid static.json: ${e.message}`);
+            }
+            return config;
+            }
+
+            /**
+            * A basic validation function for the `static.json` file.
+            */
+            function validate(config) {
+              if (!config) {
+                throw new Error('No configuration provided.');
+              }
+              if (!('_static' in config) || !config._static) {
+                throw new Error('`_static` member not found in configuration.');
+              }
+              if (!config._static?.generator) {
+                throw new Error('A `generator` is required in a `_static` configuration.');
+              }
+              if (config._static?.ecosystem && config._static?.ecosystem !== 'npm') {
+                throw new Error('Unknown ecosystem provided. `npm` is currently the only official supported ecosystem.');
+              }
+              return true;
+            }
+
+            const utils = { parse, validate };
+
+            return utils.parse({ core }, {
+              host: {
+                "base_url": "${{ steps.configure-pages.outputs.base_url }}",
+                "origin": "${{ steps.configure-pages.outputs.origin }}",
+                "host": "${{ steps.configure-pages.outputs.host }}",
+                "base_path": "${{ steps.configure-pages.outputs.base_path }}",
+              }
+            });
+      # Build the application and create an artifact for deployment.
+      - name: Configure Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version: lts/iron
+          registry-url: https://npm.pkg.github.com/
+      - name: Install Dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Obtain Generator Version
+        run: |
+          echo "GENERATOR_VERSION=$(npm show '${{ fromJson(steps.static.outputs.result)._static.generator.name }}' --json | jq -r '.version')" >> "$GITHUB_ENV"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # Obtrains the repository URL from the generator's npm package and converts it to `<owner>/<repo>` format for actions/checkout.
+      - name: Obtain Generator Repository
+        run: |
+          echo "GENERATOR_REPOSITORY=$( \
+            npm show '${{ fromJson(steps.static.outputs.result)._static.generator.name }}' --json \
+              | jq -r '.repository.url' \
+              | sed 's/git+https:\/\/github.com\///' \
+              | sed 's/.git//' \
+          )" >> "$GITHUB_ENV"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}  
+      # Clone the generator repository and checkout the version specified in the static.json file.
+      - name: Cloning Generator
+        uses: actions/checkout@v4
+        with:
+          repository: ${{inputs.generator_repository || env.GENERATOR_REPOSITORY}}
+          ref: ${{inputs.generator_ref || env.GENERATOR_VERSION}}
+          path: '.static--generator'
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # Ensure the static.json file is the user-defined file and not the generator's file.
+      # Uses `jq` and an environment variable to avoid issues with unescaped quotes in JSON values.
+      - name: Replacing static.json in Generator
+        env:
+          STATIC_JSON: ${{ steps.static.outputs.result }}
+        run: |
+          jq -r '.' <<<"$STATIC_JSON" > ./.static--generator/static.json
+      # Copy the user-defined content directory to the generator's directory.
+      - name: Copy "content" Directory to Generator
+        run: |
+          if [ -d "./content" ]; then
+            rsync -av ./content/ ./.static--generator/content/
+          fi
+      # Sync the user-defined overrides directory to the generator's directory.
+      - name: Syncing Overrides
+        run: |
+          if [ -d "./overrides" ]; then
+            rsync -av ./overrides/ ./.static--generator/
+          fi
+      # Call the ecosystem's default install and build command.
+      - name: "Building from ${{ fromJson(steps.static.outputs.result)._static.generator.name }}"
+        run: cd ./.static--generator && npm ci && npm run build
+      - name: Copying Output to Base Directory
+        run: cp -r ./.static--generator/out ./out
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+      - name: Deploy to GitHub Pages
+      #  if: ${{ inputs.deploy_to_github_pages == true }}
+        id: deployment
+        uses: actions/deploy-pages@v4
