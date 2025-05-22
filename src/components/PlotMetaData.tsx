@@ -118,7 +118,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               mode: "markers",
               x: ProcessMetaData(result).StartTime,
               y: ProcessMetaData(result).TrackLength,
-              marker: { color: "red" },
+              marker: { color: "blue" },
             },
           ]}
           layout={{
