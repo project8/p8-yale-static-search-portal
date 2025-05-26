@@ -32,7 +32,7 @@
     "@types/mdx": "^2.0.13",
     "@uiw/react-json-view": "^2.0.0-alpha.30",
     "d3-fetch": "^3.0.1",
-    "framer-motion": "^12.12.1",
+    "framer-motion": "^12.12.2",
     "lodash": "^4.17.21",
     "next": "15.3.2",
     "plotly.js-dist-min": "^2.35.3",
