@@ -117,123 +117,30 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               type: "scatter",
               mode: "markers",
               x: ProcessMetaData(result).StartTime,
-              y: ProcessMetaData(result).FirstTrackLength,
-              marker: { color: "green"
-
-
-
- },
+              y: ProcessMetaData(result).TrackLength,
+              marker: { color: "blue" },
             },
           ]}
           layout={{
             // width: 640,
             // height: 480,
             title: {
-              text: "First Track Length",
-            },
-            font: {
-              family: 'Times New Roman, Times, serif', 
-              size: 16,
-              color: '#000',
+              text: "Scatter 1",
             },
             xaxis: {
               title: {
-                text: "First Track Start Time (s)",
+                text: "first track start time (s)",
               },
             },
             yaxis: {
               title: {
-                text: "First Track Length (s)",
+                text: "first track length (s)",
               },
             },
           }}
           useResizeHandler
-          style={{ width: "35%", height: "100%" }}
+          style={{ width: "25%", height: "100%" }}
         />
-
-
-<Plot
-          data={[
-            {
-              type: "scatter",
-              mode: "markers",
-              x: ProcessMetaData(result).StartRadius,
-              y: ProcessMetaData(result).ElectronEnergy,
-              marker: { color: "green"
-
-
-
- },
-            },
-          ]}
-          layout={{
-            //width: 640,
-            //height: 480,
-            title: {
-              text: "Starting Radius vs. Energy",
-            },
-            font: {
-              family: 'Times New Roman, Times, serif', 
-              size: 16,
-              color: '#000',
-            },
-            xaxis: {
-              title: {
-                text: "Starting Radius (m)",
-              },
-            },
-            yaxis: {
-              title: {
-                text: "Energy",
-              },
-            },
-          }}
-          useResizeHandler
-          style={{ width: "35%", height: "100%" }}
-        />
-
-
-
-
-        <Plot
-          data={[
-            {
-              type: "scatter",
-              mode: "markers",
-              x: ProcessMetaData(result).StartTime,
-              y: ProcessMetaData(result).AvgFrequency,
-              marker: { color: "green"
-
- },
-            },
-          ]}
-          layout={{
-            //width: 640,
-            //height: 480,
-            title: {
-              text: "Average Frequency",
-            },
-            font: {
-              family: 'Times New Roman, Times, serif', 
-              size: 16,
-              color: '#000',
-            },
-            xaxis: {
-              title: {
-                text: "First Track Start Time (s)",
-              },
-            },
-            yaxis: {
-              title: {
-                text: "Average Frequency (Hz)",
-              },
-            },
-          }}
-          useResizeHandler
-          style={{ width: "35%", height: "100%" }}
-        />
-
-    
         <Plot
           data={[
             {
@@ -251,31 +158,24 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             // width: 640,
             // height: 480,
             title: {
-              text: "Tracks Per Electron",
-            },
-            font: {
-              family: 'Times New Roman, Times, serif', 
-              size: 16,
-              color: '#000',
+              text: "Hist 1",
             },
             xaxis: {
               range: [0, 21],
               title: {
-                text: "Tracks Per Event",
+                text: "n tracks per event",
               },
             },
             yaxis: {
               title: {
-                text: "Counts",
+                text: "counts",
               },
             },
           }}
           useResizeHandler
-          style={{ width: "35%", height: "100%" }}
+          style={{ width: "25%", height: "100%" }}
         />
       </HStack>
     </Box>
   );
 };
-
-
