@@ -11,7 +11,7 @@ jobs:
   worker:
     runs-on: ubuntu-latest
 
-    if: github.actor == 'dependabot[bot]'
+    if: github.actor == 'disableautomergedependabot[bot]'
     steps:
       - name: automerge
         run: gh pr merge --admin --merge "$PR_URL"
