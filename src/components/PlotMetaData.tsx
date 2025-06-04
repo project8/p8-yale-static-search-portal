@@ -174,7 +174,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
           }}
           useResizeHandler
           style={{ width: "25%", height: "100%" }}
-        />        
+        />
       </HStack>
     </Box>
   );
