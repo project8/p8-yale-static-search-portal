@@ -195,7 +195,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             // width: 640,
             // height: 480,
             title: {
-              text: "Track Length vs. Average Frequency",
+              text: "Track Length vs. Avg Frequency",
             },
             font: {
               family: "Times New Roman, Times, serif",
