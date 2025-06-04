@@ -182,8 +182,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               mode: "markers",
               x: ProcessMetaData(result).StartRadius,
               y: ProcessMetaData(result).ElectronEnergy,
-              marker: { color: "green"
- },
+              marker: { color: "green" },
             },
           ]}
           layout={{
