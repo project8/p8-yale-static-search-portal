@@ -175,44 +175,39 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
           useResizeHandler
           style={{ width: "25%", height: "100%" }}
         />
-<Plot
+        <Plot
           data={[
             {
-              type: "scatter",
-              mode: "markers",
-              x: ProcessMetaData(result).StartRadius,
-              y: ProcessMetaData(result).ElectronEnergy,
-              marker: { color: "green"
-
-
-
- },
+              type: "histogram",
+              xbins: {
+                end: 21,
+                size: 1.0,
+                start: 0,
+              },
+              x: ProcessMetaData(result).nTracks,
+              marker: { color: "red" },
             },
           ]}
           layout={{
-            //width: 640,
-            //height: 480,
+            // width: 640,
+            // height: 480,
             title: {
-              text: "Starting Radius vs. Energy",
-            },
-            font: {
-              family: 'Times New Roman, Times, serif', 
-              size: 16,
-              color: '#000',
+              text: "Hist 1",
             },
             xaxis: {
+              range: [0, 21],
               title: {
-                text: "Starting Radius (m)",
+                text: "n tracks per event",
               },
             },
             yaxis: {
               title: {
-                text: "Energy",
+                text: "counts",
               },
             },
           }}
           useResizeHandler
-          style={{ width: "35%", height: "100%" }}
+          style={{ width: "25%", height: "100%" }}
         />
 
 
