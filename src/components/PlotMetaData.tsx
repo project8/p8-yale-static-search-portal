@@ -186,7 +186,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             {
               type: "scatter",
               mode: "markers",
-              x: ProcessMetaData(result).StartTime,
+              x: ProcessMetaData(result).TrackLength,
               y: ProcessMetaData(result).AvgFrequency,
               marker: { color: "green" },
             },
@@ -195,7 +195,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             // width: 640,
             // height: 480,
             title: {
-              text: "Average Frequency",
+              text: "Track Length vs. Average Frequency",
             },
             font: {
               family: "Times New Roman, Times, serif",
@@ -204,7 +204,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             },
             xaxis: {
               title: {
-                text: "First Track Start Time (s)",
+                text: "Track Length (s)",
               },
             },
             yaxis: {
