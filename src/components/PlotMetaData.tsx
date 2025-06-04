@@ -175,40 +175,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
           useResizeHandler
           style={{ width: "25%", height: "100%" }}
         />
-        <Plot
-          data={[
-            {
-              type: "histogram",
-              xbins: {
-                end: 21,
-                size: 1.0,
-                start: 0,
-              },
-              x: ProcessMetaData(result).nTracks,
-              marker: { color: "red" },
-            },
-          ]}
-          layout={{
-            // width: 640,
-            // height: 480,
-            title: {
-              text: "Hist 1",
-            },
-            xaxis: {
-              range: [0, 21],
-              title: {
-                text: "n tracks per event",
-              },
-            },
-            yaxis: {
-              title: {
-                text: "counts",
-              },
-            },
-          }}
-          useResizeHandler
-          style={{ width: "25%", height: "100%" }}
-        />
+        <Plot/>
 
 
         
