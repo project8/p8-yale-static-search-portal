@@ -129,7 +129,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             },
             font: {
               family: "Times New Roman, Times, serif",
-              size: 16,
+              size: 12,
               color: "#000",
             },
             xaxis: {
@@ -164,7 +164,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             },
             font: {
               family: "Times New Roman, Times, serif",
-              size: 16,
+              size: 12,
               color: "#000",
             },
             xaxis: {
@@ -199,7 +199,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             },
             font: {
               family: "Times New Roman, Times, serif",
-              size: 16,
+              size: 12,
               color: "#000",
             },
             xaxis: {
@@ -237,7 +237,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             },
             font: {
               family: "Times New Roman, Times, serif",
-              size: 16,
+              size: 12,
               color: "#000",
             },
             xaxis: {
