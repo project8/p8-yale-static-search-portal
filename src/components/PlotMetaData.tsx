@@ -128,7 +128,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               text: "First Track Length",
             },
             font: {
-              family: "Times New Roman, Times, serif", 
+              family: "Times New Roman, Times, serif",
               size: 16,
               color: "#000",
             },
@@ -146,7 +146,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
           useResizeHandler
           style={{ width: "35%", height: "100%" }}
         />
-<Plot
+        <Plot
           data={[
             {
               type: "scatter",
@@ -163,7 +163,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               text: "Starting Radius vs. Energy",
             },
             font: {
-              family: "Times New Roman, Times, serif", 
+              family: "Times New Roman, Times, serif",
               size: 16,
               color: "#000",
             },
@@ -198,7 +198,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               text: "Average Frequency",
             },
             font: {
-              family: "Times New Roman, Times, serif", 
+              family: "Times New Roman, Times, serif",
               size: 16,
               color: "#000",
             },
@@ -236,7 +236,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               text: "Tracks Per Electron",
             },
             font: {
-              family: "Times New Roman, Times, serif", 
+              family: "Times New Roman, Times, serif",
               size: 16,
               color: "#000",
             },
