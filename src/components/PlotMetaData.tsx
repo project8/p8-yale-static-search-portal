@@ -183,22 +183,19 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               x: ProcessMetaData(result).StartRadius,
               y: ProcessMetaData(result).ElectronEnergy,
               marker: { color: "green"
-
-
-
  },
             },
           ]}
           layout={{
-            //width: 640,
-            //height: 480,
+            // width: 640,
+            // height: 480,
             title: {
               text: "Starting Radius vs. Energy",
             },
             font: {
-              family: 'Times New Roman, Times, serif', 
+              family: "Times New Roman, Times, serif",
               size: 16,
-              color: '#000',
+              color: "#000",
             },
             xaxis: {
               title: {
