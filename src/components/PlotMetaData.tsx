@@ -117,29 +117,104 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               type: "scatter",
               mode: "markers",
               x: ProcessMetaData(result).StartTime,
-              y: ProcessMetaData(result).TrackLength,
-              marker: { color: "blue" },
+              y: ProcessMetaData(result).FirstTrackLength,
+              marker: { color: "green" },
             },
           ]}
           layout={{
             // width: 640,
             // height: 480,
             title: {
-              text: "Scatter 1",
+              text: "First Track Length",
+            },
+            font: {
+              family: "Times New Roman, Times, serif", 
+              size: 16,
+              color: "#000",
             },
             xaxis: {
               title: {
-                text: "first track start time (s)",
+                text: "First Track Start Time (s)",
               },
             },
             yaxis: {
               title: {
-                text: "first track length (s)",
+                text: "First Track Length (s)",
               },
             },
           }}
           useResizeHandler
-          style={{ width: "25%", height: "100%" }}
+          style={{ width: "35%", height: "100%" }}
+        />
+<Plot
+          data={[
+            {
+              type: "scatter",
+              mode: "markers",
+              x: ProcessMetaData(result).StartRadius,
+              y: ProcessMetaData(result).ElectronEnergy,
+              marker: { color: "green" },
+            },
+          ]}
+          layout={{
+            // width: 640,
+            // height: 480,
+            title: {
+              text: "Starting Radius vs. Energy",
+            },
+            font: {
+              family: "Times New Roman, Times, serif", 
+              size: 16,
+              color: "#000",
+            },
+            xaxis: {
+              title: {
+                text: "Starting Radius (m)",
+              },
+            },
+            yaxis: {
+              title: {
+                text: "Energy",
+              },
+            },
+          }}
+          useResizeHandler
+          style={{ width: "35%", height: "100%" }}
+        />
+        <Plot
+          data={[
+            {
+              type: "scatter",
+              mode: "markers",
+              x: ProcessMetaData(result).StartTime,
+              y: ProcessMetaData(result).AvgFrequency,
+              marker: { color: "green" },
+            },
+          ]}
+          layout={{
+            // width: 640,
+            // height: 480,
+            title: {
+              text: "Average Frequency",
+            },
+            font: {
+              family: "Times New Roman, Times, serif", 
+              size: 16,
+              color: "#000",
+            },
+            xaxis: {
+              title: {
+                text: "First Track Start Time (s)",
+              },
+            },
+            yaxis: {
+              title: {
+                text: "Average Frequency (Hz)",
+              },
+            },
+          }}
+          useResizeHandler
+          style={{ width: "35%", height: "100%" }}
         />
         <Plot
           data={[
@@ -158,52 +233,22 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             // width: 640,
             // height: 480,
             title: {
-              text: "Hist 1",
-            },
-            xaxis: {
-              range: [0, 21],
-              title: {
-                text: "n tracks per event",
-              },
-            },
-            yaxis: {
-              title: {
-                text: "counts",
-              },
-            },
-          }}
-          useResizeHandler
-          style={{ width: "25%", height: "100%" }}
-        />
-        <Plot
-          data={[
-            {
-              type: "scatter",
-              mode: "markers",
-              x: ProcessMetaData(result).StartRadius,
-              y: ProcessMetaData(result).ElectronEnergy,
-              marker: { color: "green" },
-            },
-          ]}
-          layout={{
-            // width: 640,
-            // height: 480,
-            title: {
-              text: "Starting Radius vs. Energy",
+              text: "Tracks Per Electron",
             },
             font: {
-              family: "Times New Roman, Times, serif",
+              family: "Times New Roman, Times, serif", 
               size: 16,
               color: "#000",
             },
             xaxis: {
+              range: [0, 21],
               title: {
-                text: "Starting Radius (m)",
+                text: "Tracks Per Event",
               },
             },
             yaxis: {
               title: {
-                text: "Energy",
+                text: "Counts",
               },
             },
           }}
