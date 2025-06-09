@@ -265,7 +265,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
               type: "scatter",
               mode: "markers",
               x: ProcessMetaData(result).PitchAngle,
-              y: ProcessMetaData(result).Radius,
+              y: ProcessMetaData(result).StartRadius,
               marker: { color: "purple" },
             },
           ]}
@@ -273,7 +273,7 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             // width: 640,
             // height: 480,
             title: {
-              text: "Pitch Angle vs. Radius",
+              text: "Pitch Angle vs. Starting Radius",
             },
             font: {
               family: "Times New Roman, Times, serif",
