@@ -31,6 +31,7 @@ type MetaDataSummary = {
   FirstTrackLength: number[];
   StartTime: number[];
   nTracks: number[];
+  PitchAngle: number[];
 };
 
 function ProcessMetaData(result: GSearchResult): MetaDataSummary {
@@ -43,6 +44,7 @@ function ProcessMetaData(result: GSearchResult): MetaDataSummary {
   const FirstTrackLength: number[] = [];
   const StartTime: number[] = [];
   const nTracks: number[] = [];
+  const PitchAngle: number[] = [];
 
   console.log(result);
 
@@ -61,6 +63,7 @@ function ProcessMetaData(result: GSearchResult): MetaDataSummary {
       FirstTrackLength: [],
       StartTime: [],
       nTracks: [],
+      PitchAngle: [],
     };
   }
 
@@ -103,6 +106,7 @@ function ProcessMetaData(result: GSearchResult): MetaDataSummary {
     FirstTrackLength,
     StartTime,
     nTracks,
+    PitchAngle,
   };
 }
 
@@ -249,6 +253,41 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
             yaxis: {
               title: {
                 text: "Counts",
+              },
+            },
+          }}
+          useResizeHandler
+          style={{ width: "35%", height: "100%" }}
+        />
+        <Plot
+          data={[
+            {
+              type: "scatter",
+              mode: "markers",
+              x: ProcessMetaData(result).PitchAngle,
+              y: ProcessMetaData(result).Radius,
+              marker: { color: "purple" },
+            },
+          ]}
+          layout={{
+            // width: 640,
+            // height: 480,
+            title: {
+              text: "Pitch Angle vs. Radius",
+            },
+            font: {
+              family: "Times New Roman, Times, serif",
+              size: 12,
+              color: "#000",
+            },
+            xaxis: {
+              title: {
+                text: "Pitch Angle",
+              },
+            },
+            yaxis: {
+              title: {
+                text: "Radius",
               },
             },
           }}
