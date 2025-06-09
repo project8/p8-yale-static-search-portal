@@ -83,6 +83,7 @@ function ProcessMetaData(result: GSearchResult): MetaDataSummary {
           );
           StartRadius.push(data?.[iEvent]?.[iTrack]?.["start-radius"]);
           ElectronEnergy.push(data?.[iEvent]?.[iTrack]?.["energy-ev"]);
+          PitchAngle.push(data?.[iEvent]?.[iTrack]?.["pitch-angle"] ?? 0);
           TrackLength.push(
             data?.[iEvent]?.[iTrack]?.["end-time"] -
               data?.[iEvent]?.[iTrack]?.["start-time"],
@@ -221,6 +222,8 @@ export const PlotMetaData = ({ result }: { result: GSearchResult }) => {
           useResizeHandler
           style={{ width: "35%", height: "100%" }}
         />
+      </HStack>
+      <HStack h="400px">
         <Plot
           data={[
             {
