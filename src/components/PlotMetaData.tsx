@@ -11,6 +11,7 @@ type LocustTrack = {
   ["output-avg-frequency"]: number;
   ["start-radius"]: number;
   ["energy-ev"]: number;
+  ["pitch-angle"]: number;
 };
 
 type LocustEvent = {
