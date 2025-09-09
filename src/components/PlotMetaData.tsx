@@ -36,7 +36,7 @@ type MetaDataSummary = {
 };
 
 function ProcessMetaData(result: GSearchResult): MetaDataSummary {
-  const shortTracks = 1e-6; // cut for short tracks
+  const shortTracks = 1e-10; // cut for short tracks
 
   const AvgFrequency: number[] = [];
   const StartRadius: number[] = [];
